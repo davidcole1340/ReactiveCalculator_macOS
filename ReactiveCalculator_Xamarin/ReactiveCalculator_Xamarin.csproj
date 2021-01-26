@@ -76,11 +76,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DomainAbstractions/DataFlowConnector.cs" />
-    <Compile Include="DomainAbstractions/EventConnector.cs" />
-    <Compile Include="DomainAbstractions/MainWindow.cs" />
-    <Compile Include="ProgrammingParagadims/IDataFlow.cs" />
-    <Compile Include="ProgrammingParagadims/IEvent.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="ViewController.cs" />
@@ -91,6 +86,16 @@
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ALA\ALA.csproj">
+      <Project>{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}</Project>
+      <Name>ALA</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ALA.Xamarin.Mac\ALA.Xamarin.Mac.csproj">
+      <Project>{829F7490-4E0F-48E3-A231-1F8DADF94738}</Project>
+      <Name>ALA.Xamarin.Mac</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

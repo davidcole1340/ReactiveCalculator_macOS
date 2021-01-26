@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.808.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactiveCalculator_Xamarin", "ReactiveCalculator_Xamarin\ReactiveCalculator_Xamarin.csproj", "{1E190C19-409A-42F4-8271-F5E9D8EDF4A9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALA", "ALA\ALA.csproj", "{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALA.Xamarin.Mac", "ALA.Xamarin.Mac\ALA.Xamarin.Mac.csproj", "{829F7490-4E0F-48E3-A231-1F8DADF94738}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{1E190C19-409A-42F4-8271-F5E9D8EDF4A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E190C19-409A-42F4-8271-F5E9D8EDF4A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E190C19-409A-42F4-8271-F5E9D8EDF4A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{829F7490-4E0F-48E3-A231-1F8DADF94738}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{829F7490-4E0F-48E3-A231-1F8DADF94738}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{829F7490-4E0F-48E3-A231-1F8DADF94738}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{829F7490-4E0F-48E3-A231-1F8DADF94738}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

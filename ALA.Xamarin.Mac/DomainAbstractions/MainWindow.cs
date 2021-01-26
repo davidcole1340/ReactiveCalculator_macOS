@@ -1,8 +1,8 @@
 using AppKit;
 using CoreGraphics;
-using ProgrammingParagadims;
+using ALA.ProgrammingParagadims;
 
-namespace DomainAbstractions
+namespace ALA.Xamarin.Mac.DomainAbstractions
 {
     public class MainWindow : IEvent
     {
