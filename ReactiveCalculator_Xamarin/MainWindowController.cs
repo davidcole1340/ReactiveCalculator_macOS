@@ -2,6 +2,7 @@
 using ALA.Libraries;
 using ALA.ProgrammingParagadims;
 using ALA.Xamarin.Mac.DomainAbstractions;
+using ALA.Xamarin.Mac.ProgrammingParagadims;
 using AppKit;
 using CoreGraphics;
 using Foundation;
@@ -14,12 +15,23 @@ namespace ReactiveCalculator_Xamarin
         {
             #region Instantiations
             var mainWindow = new MainWindow() { Title = "Reactive Calculator" };
-            var text = new Text() { Content = "Hello, world!" };
+            var text = new Text() { Content = "Hello, world!", Margin = new Thickness(30) };
+            var text2 = new Text() { Content = "Xamarin.Mac ALA" };
+            var text3 = new Text() { Content = "Xamarin.Mac ALA" };
+            var toolbar = new Toolbar("ReactiveToolbar") {};
+            var helloItem = new ToolbarItem("helloItem") { Title = "Print", Label = "Hello" };
             #endregion
             
             #region Wiring
-            mainWindow.WireTo(text, "children");
+            mainWindow
+                .WireTo(text, "children")
+                .WireTo(text2, "children")
+                .WireTo(text3, "children")
+                .WireTo(toolbar
+                    .WireTo(helloItem, "children"), "toolbar");
             #endregion
+            
+            Wiring.PostWiringInitialize();
 
             base.Window = mainWindow.GetWindow();
             ((IEvent)mainWindow).Execute();

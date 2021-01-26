@@ -15,6 +15,6 @@ namespace ALA.Xamarin.Mac.ProgrammingParagadims
         /// Sets the container for the child element.
         /// </summary>
         /// <param name="rect">Container</param>
-        void SetContainer(CGRect rect);
+        void SetContainer(double x, double y, double width, double height);
     }
 }

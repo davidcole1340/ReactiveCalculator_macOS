@@ -31,6 +31,7 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
         }
 
         // ports
+        private INSObject<NSToolbar> toolbar;
         private List<IXamarinUI> children = new List<IXamarinUI>();
 
         // private fields
@@ -71,17 +72,14 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
         private void CalculateChildrenSize()
         {
             double x = 0;
-            double width = frame.Width / children.Count;
+            double width = content.Frame.Width / children.Count;
 
             foreach (var child in children)
             {
-                // todo give delegates their size? not sure -how this is gonna work
-                // will need to pass down a frame
-                // content.AddSubview(child.GetUIElement());
-
-                CGRect rect = new CGRect(x, 0, width, frame.Height);
+                // delegate sizes to children
+                // any children with grandchildren should also delegate their size
+                child.SetContainer(x, 0, width, content.Frame.Height);
                 x += width;
-                child.SetContainer(rect);
             }
         }
 
@@ -93,6 +91,9 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
                 content.AddSubview(child.GetUIElement());
             }
 
+            if (toolbar != null) window.Toolbar = toolbar.GetNSObject() as NSToolbar;
+
+            CalculateChildrenSize();
             window.AwakeFromNib();
         }
     }
