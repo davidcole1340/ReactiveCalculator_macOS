@@ -47,6 +47,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.1.6.1\lib\xamarinmac20\Xamarin.Essentials.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK" />
+    <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -68,8 +73,14 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainAbstractions/DataFlowConnector.cs" />
+    <Compile Include="DomainAbstractions/EventConnector.cs" />
+    <Compile Include="DomainAbstractions/MainWindow.cs" />
+    <Compile Include="ProgrammingParagadims/IDataFlow.cs" />
+    <Compile Include="ProgrammingParagadims/IEvent.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="ViewController.cs" />
