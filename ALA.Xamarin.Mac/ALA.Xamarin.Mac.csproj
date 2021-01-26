@@ -44,19 +44,30 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
+    <Reference Include="Xamarin.Essentials">
+      <HintPath>..\packages\Xamarin.Essentials.1.6.1\lib\xamarinmac20\Xamarin.Essentials.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK" />
+    <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DomainAbstractions\MainWindow.cs" />
+    <Compile Include="DomainAbstractions\Text.cs" />
+    <Compile Include="ProgrammingParagadims\IXamarinUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DomainAbstractions\" />
+    <Folder Include="ProgrammingParagadims\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ALA\ALA.csproj">
       <Project>{89BA0ED2-E2AA-4682-985D-FCDBE5CA25D0}</Project>
       <Name>ALA</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
 </Project>

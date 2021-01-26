@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <Folder Include="DomainAbstractions\" />
+    <Folder Include="Libraries\" />
     <Folder Include="ProgrammingParagadims\" />
   </ItemGroup>
 </Project>
