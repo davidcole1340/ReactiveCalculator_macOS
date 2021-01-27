@@ -1,4 +1,3 @@
-using System;
 using ALA.ProgrammingParagadims;
 using ALA.Xamarin.Mac.ProgrammingParagadims;
 using AppKit;
@@ -18,30 +17,25 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
     {
         // properties
         public string InstanceName = "Default";
-        public string Content { set => textField.StringValue = value; }
+        public string Content { set => textField.Value = value; }
         public NSColor BackgroundColor { set => textField.BackgroundColor = value; }
         public NSColor TextColor { set => textField.TextColor = value; }
-        public Thickness Margin { get; set; } = new Thickness(0);
 
         // ports
 
         // private fields
         private NSView container;
-        private NSTextField textField;
+        private NSTextView textField;
 
-        public Text()
+        public Text(string text = "")
         {
-            textField = new NSTextField
+            textField = new NSTextView
             {
-                Editable = false,
-                Bezeled = false,
-                Selectable = false,
-                // DrawsBackground = false,
-                AutoresizingMask = NSViewResizingMask.WidthSizable | NSViewResizingMask.MinYMargin,
-
                 BackgroundColor = NSColor.Clear,
-                TextColor = NSColor.White,
-                StringValue = ""
+                Editable = false,
+                Selectable = false,
+                AutoresizingMask = NSViewResizingMask.WidthSizable | NSViewResizingMask.MinYMargin,
+                Value = text
             };
         }
 

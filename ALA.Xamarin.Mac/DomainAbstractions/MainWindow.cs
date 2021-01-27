@@ -5,6 +5,7 @@ using Xamarin.Essentials;
 using System.Collections.Generic;
 using ALA.Xamarin.Mac.ProgrammingParagadims;
 using System;
+using Foundation;
 
 namespace ALA.Xamarin.Mac.DomainAbstractions
 {
@@ -29,6 +30,13 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
                 frame.Y = (nfloat)(DeviceDisplay.MainDisplayInfo.Height - value) / 2;
             }
         }
+        public Thickness Margin
+        {
+            set
+            {
+                stackView.EdgeInsets = value.ToNSObject();
+            }
+        }
 
         // ports
         private INSObject<NSToolbar> toolbar;
@@ -36,7 +44,7 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
 
         // private fields
         private CGRect frame;
-        private NSView content;
+        private NSStackView stackView;
         private NSWindow window;
 
         public MainWindow()
@@ -45,7 +53,14 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
             Width = DeviceDisplay.MainDisplayInfo.Width * 0.65;
             Height = DeviceDisplay.MainDisplayInfo.Height * 0.6;
 
-            content = new NSView(frame);
+            stackView = new NSStackView(frame)
+            {
+                Alignment = NSLayoutAttribute.CenterX,
+                Distribution = NSStackViewDistribution.FillEqually,
+                Spacing = 5,
+                TranslatesAutoresizingMaskIntoConstraints = false
+            };
+
             window = new NSWindow(
                 frame,
                 NSWindowStyle.Closable | NSWindowStyle.Miniaturizable |
@@ -53,12 +68,7 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
                 NSBackingStore.Buffered,
                 false
             );
-            window.ContentView = content;
-
-            window.DidResize += (sender, args) =>
-            {
-                CalculateChildrenSize();
-            };
+            window.ContentView = stackView;
         }
 
         /// <summary>
@@ -69,31 +79,17 @@ namespace ALA.Xamarin.Mac.DomainAbstractions
             return window;
         }
 
-        private void CalculateChildrenSize()
-        {
-            double x = 0;
-            double width = content.Frame.Width / children.Count;
-
-            foreach (var child in children)
-            {
-                // delegate sizes to children
-                // any children with grandchildren should also delegate their size
-                child.SetContainer(x, 0, width, content.Frame.Height);
-                x += width;
-            }
-        }
-
         // IEvent implementation
         void IEvent.Execute()
         {
             foreach (var child in children)
             {
-                content.AddSubview(child.GetUIElement());
+                stackView.AddArrangedSubview(child.GetUIElement());
             }
 
-            if (toolbar != null) window.Toolbar = toolbar.GetNSObject() as NSToolbar;
+            if (toolbar != null) window.Toolbar = toolbar.GetNSObject();
 
-            CalculateChildrenSize();
+            // CalculateChildrenSize();
             window.AwakeFromNib();
         }
     }

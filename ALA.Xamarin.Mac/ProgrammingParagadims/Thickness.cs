@@ -1,3 +1,6 @@
+using System;
+using AppKit;
+
 namespace ALA.Xamarin.Mac.ProgrammingParagadims
 {
     public struct Thickness
@@ -18,6 +21,11 @@ namespace ALA.Xamarin.Mac.ProgrammingParagadims
             Top = top;
             Right = right;
             Bottom = bottom;
+        }
+
+        public NSEdgeInsets ToNSObject()
+        {
+            return new NSEdgeInsets((nfloat)Top, (nfloat)Left, (nfloat)Bottom, (nfloat)Right);
         }
     }
 }

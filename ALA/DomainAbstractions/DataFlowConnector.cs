@@ -14,7 +14,7 @@ namespace ALA.DomainAbstractions
     /// 4. IDataFlow<T> last: output port that will output after the fanoutList and IDataFlow_B data changed event. This enables chaining of data flow and explicit execution of last to push the data flow.
     /// </summary>
     /// <typeparam name="T">Generic data type</typeparam>
-    class DataFlowConnector<T> : IDataFlow<T>, IDataFlow_B<T> // input, output_B
+    public class DataFlowConnector<T> : IDataFlow<T>, IDataFlow_B<T> // input, output_B
     {
         // properties
         public string InstanceName = "Default";
@@ -33,7 +33,7 @@ namespace ALA.DomainAbstractions
             {
                 data = value;
                 foreach (var df in fanoutList) df.Data = data;
-                DataChanged.Invoke();
+                DataChanged?.Invoke();
                 if (last != null) last.Data = data;
             }
         }

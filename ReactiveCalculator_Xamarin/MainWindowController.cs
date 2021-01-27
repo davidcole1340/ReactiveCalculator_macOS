@@ -1,11 +1,8 @@
-﻿using System;
-using ALA.Libraries;
+﻿using ALA.Libraries;
 using ALA.ProgrammingParagadims;
 using ALA.Xamarin.Mac.DomainAbstractions;
 using ALA.Xamarin.Mac.ProgrammingParagadims;
 using AppKit;
-using CoreGraphics;
-using Foundation;
 
 namespace ReactiveCalculator_Xamarin
 {
@@ -13,22 +10,35 @@ namespace ReactiveCalculator_Xamarin
     {
         public MainWindowController() : base()
         {
+            ALAInitialize();
+        }
+
+        private void ALAInitialize()
+        {
             #region Instantiations
-            var mainWindow = new MainWindow() { Title = "Reactive Calculator" };
-            var text = new Text() { Content = "Hello, world!", Margin = new Thickness(30) };
-            var text2 = new Text() { Content = "Xamarin.Mac ALA" };
-            var text3 = new Text() { Content = "Xamarin.Mac ALA" };
+            var mainWindow = new MainWindow() { Title = "Reactive Calculator", Margin = new Thickness(10) };
+            var horiz = new Horizontal() { Margin = new Thickness(5) };
+            var text = new Text() { Content = "Hello, world! text1" };
+            var text2 = new Text() { Content = "Xamarin.Mac ALA text2" };
+            var text3 = new Text() { Content = "Xamarin.Mac ALA text3" };
             var toolbar = new Toolbar("ReactiveToolbar") {};
             var helloItem = new ToolbarItem("helloItem") { Title = "Print", Label = "Hello" };
             #endregion
             
             #region Wiring
+            // mainWindow
+            //     .WireTo(text, "children")
+            //     .WireTo(text2, "children")
+            //     .WireTo(text3, "children")
+            //     .WireTo(toolbar
+            //         .WireTo(helloItem, "children"), "toolbar");
             mainWindow
                 .WireTo(text, "children")
                 .WireTo(text2, "children")
                 .WireTo(text3, "children")
                 .WireTo(toolbar
-                    .WireTo(helloItem, "children"), "toolbar");
+                    .WireTo(helloItem, "children"), "toolbar")
+           ;
             #endregion
             
             Wiring.PostWiringInitialize();
